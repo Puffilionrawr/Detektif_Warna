@@ -2914,6 +2914,14 @@
         "name": "Group191.png",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "file": "Group77.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Group77.png",
+        "smoothed": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -3564,6 +3572,11 @@
   "objectsGroups": [],
   "variables": [
     {
+      "name": "RedirectToLevel",
+      "type": "boolean",
+      "value": false
+    },
+    {
       "name": "MobilBenar",
       "type": "number",
       "value": 0
@@ -3676,7 +3689,7 @@
     {
       "name": "Volume",
       "type": "number",
-      "value": 100
+      "value": 50
     },
     {
       "name": "TemporarySetting",
@@ -3725,7 +3738,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.3010461197182469,
+        "zoomFactor": 0.29122588669111255,
         "windowMask": false
       },
       "objectsGroups": [],
@@ -6487,7 +6500,7 @@
                 "Backsound 1.wav",
                 "1",
                 "yes",
-                "(VolumeBar.Value())",
+                "VolumeBar.Value()",
                 "1"
               ]
             },
@@ -6517,7 +6530,7 @@
                 "value": "JSONToVariableStructure2"
               },
               "parameters": [
-                "\"Level1F\"",
+                "\"Level1Done\"",
                 "Level1"
               ]
             },
@@ -6537,8 +6550,17 @@
                 "value": "JSONToVariableStructure2"
               },
               "parameters": [
-                "\"Level2F\"",
+                "\"Level2Done\"",
                 "Level2"
+              ]
+            },
+            {
+              "type": {
+                "value": "RePlayMusicCanal"
+              },
+              "parameters": [
+                "",
+                "1"
               ]
             }
           ]
@@ -7545,6 +7567,16 @@
                 "",
                 "\"easeInOutCubic\"",
                 "2"
+              ]
+            },
+            {
+              "type": {
+                "value": "EcrireFichierTxt"
+              },
+              "parameters": [
+                "\"Volume\"",
+                "\"Volume\"",
+                "ToJSON(Volume)"
               ]
             }
           ]
@@ -9547,7 +9579,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.4057518905943834,
+        "zoomFactor": 0.841642812537312,
         "windowMask": false
       },
       "objectsGroups": [],
@@ -9613,7 +9645,7 @@
           "width": 0,
           "x": 905,
           "y": 236,
-          "zOrder": 3,
+          "zOrder": 18,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -9677,7 +9709,7 @@
           "width": 0,
           "x": 860,
           "y": 0,
-          "zOrder": 2,
+          "zOrder": 0,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -9725,7 +9757,7 @@
           "width": 0,
           "x": 904,
           "y": 247,
-          "zOrder": 7,
+          "zOrder": 20,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -10879,11 +10911,12 @@
             },
             {
               "type": {
-                "value": "JSONToVariableStructure2"
+                "value": "SetNumberVariable"
               },
               "parameters": [
-                "\"Level1F\"",
-                "Level1"
+                "Level1",
+                "=",
+                "ToNumber(Level1Done)"
               ]
             },
             {
@@ -10899,11 +10932,12 @@
             },
             {
               "type": {
-                "value": "JSONToVariableStructure2"
+                "value": "SetNumberVariable"
               },
               "parameters": [
-                "\"Level2F\"",
-                "Level2"
+                "Level2",
+                "=",
+                "ToNumber(Level2Done)"
               ]
             },
             {
@@ -10958,7 +10992,7 @@
               },
               "parameters": [
                 "",
-                "Merah",
+                "Kuning",
                 "526",
                 "-720",
                 ""
@@ -10997,6 +11031,16 @@
                 "Animation",
                 "=",
                 "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ChangePlan"
+              },
+              "parameters": [
+                "Kuning",
+                "=",
+                "0"
               ]
             }
           ]
@@ -11062,6 +11106,16 @@
                 "=",
                 "\"Correct\""
               ]
+            },
+            {
+              "type": {
+                "value": "ChangePlan"
+              },
+              "parameters": [
+                "Hijau",
+                "=",
+                "0"
+              ]
             }
           ]
         },
@@ -11122,6 +11176,16 @@
               "parameters": [
                 "",
                 "\"Varian Level1\"",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "RedirectToLevel",
+                "False",
                 ""
               ]
             }
@@ -11626,7 +11690,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": true,
-        "zoomFactor": 0.31119749424452064,
+        "zoomFactor": 0.3010461197182463,
         "windowMask": false
       },
       "objectsGroups": [],
@@ -13033,7 +13097,7 @@
                 "\"Benar\"",
                 "\"Level B1\"",
                 "",
-                "Setting1"
+                "Setting2"
               ]
             },
             {
@@ -13125,8 +13189,128 @@
                     "",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Level1",
+                    "=",
+                    "1"
+                  ]
                 }
               ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::And"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "A1",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "B1",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "Level1",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BooleanVariable"
+                      },
+                      "parameters": [
+                        "RedirectToLevel",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Level\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "A1",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "B1",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"Benar\"",
+                    "\"Level A1\"",
+                    "ToJSON(A1)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"Benar\"",
+                    "\"Level B1\"",
+                    "ToJSON(B1)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": []
             }
           ]
         },
@@ -13942,6 +14126,26 @@
                 "B1",
                 "=",
                 "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "EcrireFichierTxt"
+              },
+              "parameters": [
+                "\"Benar\"",
+                "\"Level A1\"",
+                "ToJSON(A1)"
+              ]
+            },
+            {
+              "type": {
+                "value": "EcrireFichierTxt"
+              },
+              "parameters": [
+                "\"Benar\"",
+                "\"Level B1\"",
+                "ToJSON(B1)"
               ]
             }
           ]
@@ -15604,6 +15808,16 @@
                 "",
                 ""
               ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Escape",
+                "False",
+                "1"
+              ]
             }
           ]
         },
@@ -15731,6 +15945,16 @@
                 "",
                 "\"Home Page\"",
                 ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Escape",
+                "False",
+                "1"
               ]
             }
           ]
@@ -15918,6 +16142,11 @@
               ]
             }
           ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": []
         }
       ],
       "layers": [
@@ -17353,6 +17582,16 @@
                 "",
                 ""
               ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Escape",
+                "False",
+                "1"
+              ]
             }
           ]
         },
@@ -17468,6 +17707,16 @@
                 "",
                 "\"Home Page\"",
                 ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Escape",
+                "False",
+                "1"
               ]
             }
           ]
@@ -17866,7 +18115,7 @@
               "name": "Mobil"
             },
             {
-              "name": "Buku"
+              "name": "Boneka"
             },
             {
               "name": "Topi"
@@ -17895,7 +18144,7 @@
               "name": "Ikan"
             },
             {
-              "name": "Buku"
+              "name": "Boneka"
             }
           ]
         },
@@ -18083,7 +18332,7 @@
           "height": 0,
           "keepRatio": true,
           "layer": "",
-          "name": "Buku",
+          "name": "Boneka",
           "persistentUuid": "fb4209f5-96a8-4ea4-9ca8-f33f3ee646a9",
           "width": 0,
           "x": 494,
@@ -18611,7 +18860,7 @@
         {
           "adaptCollisionMaskAutomatically": true,
           "assetStoreId": "",
-          "name": "Buku",
+          "name": "Boneka",
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [
@@ -18649,7 +18898,7 @@
                   "sprites": [
                     {
                       "hasCustomCollisionMask": true,
-                      "image": "Group 43.png",
+                      "image": "Group77.png",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
@@ -20695,7 +20944,7 @@
             "objectName": "Mobil"
           },
           {
-            "objectName": "Buku"
+            "objectName": "Boneka"
           },
           {
             "objectName": "Topi"
@@ -20998,9 +21247,9 @@
                           "parameters": [
                             "BukuBlur",
                             "=",
-                            "Buku.X()+1280",
+                            "Boneka.X() + 1280",
                             "=",
-                            "Buku.Y()"
+                            "Boneka.Y()"
                           ]
                         }
                       ]
@@ -22017,6 +22266,26 @@
                 "\"Benar Semua A1\"",
                 ""
               ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MobilBenar",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "TopiBenar",
+                "=",
+                "0"
+              ]
             }
           ]
         },
@@ -22117,7 +22386,7 @@
                 "value": "ButtonStates::ButtonFSM::IsHovered"
               },
               "parameters": [
-                "Buku",
+                "Boneka",
                 "ButtonFSM",
                 ""
               ]
@@ -22147,7 +22416,7 @@
                 "value": "Tween::TweenBehavior::AddObjectScaleTween3"
               },
               "parameters": [
-                "Buku",
+                "Boneka",
                 "Tween",
                 "\"\"",
                 "1.1",
@@ -22168,7 +22437,7 @@
                 "value": "ButtonStates::ButtonFSM::IsHovered"
               },
               "parameters": [
-                "Buku",
+                "Boneka",
                 "ButtonFSM",
                 ""
               ]
@@ -22186,7 +22455,7 @@
                 "value": "Tween::TweenBehavior::AddObjectScaleTween3"
               },
               "parameters": [
-                "Buku",
+                "Boneka",
                 "Tween",
                 "\"\"",
                 "1",
@@ -26892,6 +27161,26 @@
                 "\"Benar Semua B1\"",
                 ""
               ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "TasBenar",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "BonekaBenar",
+                "=",
+                "0"
+              ]
             }
           ]
         },
@@ -27621,7 +27910,18 @@
         "windowMask": false
       },
       "objectsGroups": [],
-      "variables": [],
+      "variables": [
+        {
+          "name": "Setting1",
+          "type": "string",
+          "value": "0"
+        },
+        {
+          "name": "Setting2",
+          "type": "string",
+          "value": "0"
+        }
+      ],
       "instances": [
         {
           "angle": 0,
@@ -27994,6 +28294,66 @@
           "actions": [
             {
               "type": {
+                "value": "ReadStringFromStorage"
+              },
+              "parameters": [
+                "\"Complete\"",
+                "\"Level1\" ",
+                "",
+                "Level1Done"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "\"Level1Done\"",
+                "Level1"
+              ]
+            },
+            {
+              "type": {
+                "value": "ReadStringFromStorage"
+              },
+              "parameters": [
+                "\"Benar\"",
+                "\"Level A1\"",
+                "",
+                "Setting1"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "\"Setting1\"",
+                "A1"
+              ]
+            },
+            {
+              "type": {
+                "value": "ReadStringFromStorage"
+              },
+              "parameters": [
+                "\"Benar\"",
+                "\"Level B1\"",
+                "",
+                "Setting2"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "\"Setting2\"",
+                "B1"
+              ]
+            },
+            {
+              "type": {
                 "value": "Wait"
               },
               "parameters": [
@@ -28011,6 +28371,108 @@
                 "30",
                 "1"
               ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::And"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "A1",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "B1",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "Level1",
+                        "=",
+                        "1"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Level\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "A1",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "B1",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"Benar\"",
+                    "\"Level A1\"",
+                    "ToJSON(A1)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"Benar\"",
+                    "\"Level B1\"",
+                    "ToJSON(B1)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": []
             }
           ]
         },
@@ -28078,6 +28540,16 @@
                 "A1",
                 "=",
                 "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "RedirectToLevel",
+                "True",
+                ""
               ]
             },
             {
@@ -28428,7 +28900,18 @@
         "windowMask": false
       },
       "objectsGroups": [],
-      "variables": [],
+      "variables": [
+        {
+          "name": "Setting1",
+          "type": "string",
+          "value": "0"
+        },
+        {
+          "name": "Setting2",
+          "type": "string",
+          "value": "0"
+        }
+      ],
       "instances": [
         {
           "angle": 0,
@@ -28801,6 +29284,66 @@
           "actions": [
             {
               "type": {
+                "value": "ReadStringFromStorage"
+              },
+              "parameters": [
+                "\"Complete\"",
+                "\"Level1\" ",
+                "",
+                "Level1Done"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "\"Level1Done\"",
+                "Level1"
+              ]
+            },
+            {
+              "type": {
+                "value": "ReadStringFromStorage"
+              },
+              "parameters": [
+                "\"Benar\"",
+                "\"Level A1\"",
+                "",
+                "Setting1"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "\"Setting1\"",
+                "A1"
+              ]
+            },
+            {
+              "type": {
+                "value": "ReadStringFromStorage"
+              },
+              "parameters": [
+                "\"Benar\"",
+                "\"Level B1\"",
+                "",
+                "Setting2"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "\"Setting2\"",
+                "B1"
+              ]
+            },
+            {
+              "type": {
                 "value": "Wait"
               },
               "parameters": [
@@ -28818,6 +29361,108 @@
                 "30",
                 "1"
               ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::And"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "A1",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "B1",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "Level1",
+                        "=",
+                        "1"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Level\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "A1",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "B1",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"Benar\"",
+                    "\"Level A1\"",
+                    "ToJSON(A1)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"Benar\"",
+                    "\"Level B1\"",
+                    "ToJSON(B1)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": []
             }
           ]
         },
@@ -28885,6 +29530,16 @@
                 "B1",
                 "=",
                 "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "RedirectToLevel",
+                "True",
+                ""
               ]
             },
             {
@@ -30699,6 +31354,16 @@
                         "=",
                         "1"
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "Level2",
+                        "=",
+                        "0"
+                      ]
                     }
                   ]
                 }
@@ -30715,8 +31380,148 @@
                     "",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Level2",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "A2",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "B2",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::And"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "A2",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "B2",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "Level2",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BooleanVariable"
+                      },
+                      "parameters": [
+                        "RedirectToLevel",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Level\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "A2",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "B2",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"Benar\"",
+                    "\"Level A2\"",
+                    "ToJSON(A2)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"Benar\"",
+                    "\"Level B2\"",
+                    "ToJSON(B2)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": []
             }
           ]
         },
@@ -33176,6 +33981,16 @@
                 "",
                 ""
               ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Escape",
+                "False",
+                "1"
+              ]
             }
           ]
         },
@@ -33303,6 +34118,16 @@
                 "",
                 "\"Home Page\"",
                 ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Escape",
+                "False",
+                "1"
               ]
             }
           ]
@@ -34925,6 +35750,16 @@
                 "",
                 ""
               ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Escape",
+                "False",
+                "1"
+              ]
             }
           ]
         },
@@ -35040,6 +35875,16 @@
                 "",
                 "\"Home Page\"",
                 ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Escape",
+                "False",
+                "1"
               ]
             }
           ]
@@ -39598,6 +40443,26 @@
                 "",
                 "\"Benar Semua A2\"",
                 ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "KakiBenar",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "IkanBenar",
+                "=",
+                "0"
               ]
             }
           ]
@@ -44478,6 +45343,26 @@
                 "\"Benar Semua B2\"",
                 ""
               ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "TanganBenar",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "KatakBenar",
+                "=",
+                "0"
+              ]
             }
           ]
         },
@@ -45668,6 +46553,16 @@
             },
             {
               "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "RedirectToLevel",
+                "True",
+                ""
+              ]
+            },
+            {
+              "type": {
                 "value": "EcrireFichierTxt"
               },
               "parameters": [
@@ -46471,6 +47366,16 @@
                 "B2",
                 "=",
                 "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "RedirectToLevel",
+                "True",
+                ""
               ]
             },
             {
@@ -48164,6 +49069,108 @@
                 ""
               ]
             }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::And"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "A3",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "B3",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BooleanVariable"
+                      },
+                      "parameters": [
+                        "RedirectToLevel",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Level\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "A3",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "B3",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"Benar\"",
+                    "\"Level A3\"",
+                    "ToJSON(A3)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"Benar\"",
+                    "\"Level B3\"",
+                    "ToJSON(B3)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": []
+            }
           ]
         },
         {
@@ -48171,41 +49178,48 @@
           "conditions": [
             {
               "type": {
-                "value": "BuiltinCommonInstructions::And"
+                "value": "NumberVariable"
               },
-              "parameters": [],
-              "subInstructions": [
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "A3",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "B3",
-                    "=",
-                    "1"
-                  ]
-                }
+              "parameters": [
+                "A3",
+                "=",
+                "1"
               ]
             }
           ],
           "actions": [
             {
               "type": {
-                "value": "Scene"
+                "value": "Delete"
               },
               "parameters": [
-                "",
-                "\"Home Page\"",
+                "VarianA",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "B3",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "VarianB",
                 ""
               ]
             }
@@ -48491,15 +49505,6 @@
                 "",
                 "yes"
               ]
-            },
-            {
-              "type": {
-                "value": "Delete"
-              },
-              "parameters": [
-                "VarianA",
-                ""
-              ]
             }
           ]
         },
@@ -48619,15 +49624,6 @@
                 "0.3",
                 "",
                 "yes"
-              ]
-            },
-            {
-              "type": {
-                "value": "Delete"
-              },
-              "parameters": [
-                "VarianB",
-                ""
               ]
             }
           ]
@@ -50183,6 +51179,16 @@
                 "",
                 ""
               ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Escape",
+                "False",
+                "1"
+              ]
             }
           ]
         },
@@ -50310,6 +51316,16 @@
                 "",
                 "\"Home Page\"",
                 ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Escape",
+                "False",
+                "1"
               ]
             }
           ]
@@ -51932,6 +52948,16 @@
                 "",
                 ""
               ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Escape",
+                "False",
+                "1"
+              ]
             }
           ]
         },
@@ -52047,6 +53073,16 @@
                 "",
                 "\"Home Page\"",
                 ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Escape",
+                "False",
+                "1"
               ]
             }
           ]
@@ -57388,6 +58424,36 @@
                 "",
                 "\"Benar Semua A3\"",
                 ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "BebekBenar",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "LegoBenar",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "PisangBenar",
+                "=",
+                "0"
               ]
             }
           ]
@@ -63059,6 +64125,26 @@
                 "\"Benar Semua B3\"",
                 ""
               ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "AnggurBenar",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "TerongBenar",
+                "=",
+                "0"
+              ]
             }
           ]
         },
@@ -64511,6 +65597,16 @@
             },
             {
               "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "RedirectToLevel",
+                "True",
+                ""
+              ]
+            },
+            {
+              "type": {
                 "value": "EcrireFichierTxt"
               },
               "parameters": [
@@ -65380,6 +66476,16 @@
                 "B3",
                 "=",
                 "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "RedirectToLevel",
+                "True",
+                ""
               ]
             },
             {
