@@ -3715,6 +3715,16 @@
       "name": "Click",
       "type": "number",
       "value": 0
+    },
+    {
+      "name": "Proses",
+      "type": "boolean",
+      "value": false
+    },
+    {
+      "name": "LevelSelesai",
+      "type": "boolean",
+      "value": false
     }
   ],
   "layouts": [
@@ -9200,6 +9210,49 @@
                 "",
                 "0"
               ]
+            },
+            {
+              "type": {
+                "value": "PrioritizeLoadingOfScene"
+              },
+              "parameters": [
+                "",
+                "\"Benar Semua B1\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "AreSceneAssetsLoaded"
+              },
+              "parameters": [
+                "",
+                "\"Benar Semua B1\""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Wait"
+              },
+              "parameters": [
+                "3"
+              ]
+            },
+            {
+              "type": {
+                "value": "Scene"
+              },
+              "parameters": [
+                "",
+                "\"Level\"",
+                ""
+              ]
             }
           ]
         },
@@ -9416,30 +9469,6 @@
                 "Bawah2",
                 "1350",
                 "534",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "Wait"
-              },
-              "parameters": [
-                "5"
-              ]
-            },
-            {
-              "type": {
-                "value": "Scene"
-              },
-              "parameters": [
-                "",
-                "\"Level\"",
                 ""
               ]
             }
@@ -15579,7 +15608,7 @@
                 "value": "Wait"
               },
               "parameters": [
-                "4"
+                "2"
               ]
             },
             {
@@ -17023,7 +17052,7 @@
                 "value": "Wait"
               },
               "parameters": [
-                "4"
+                "2"
               ]
             },
             {
@@ -18081,7 +18110,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.3553434558816993,
+        "zoomFactor": 0.17130934511241908,
         "windowMask": false
       },
       "objectsGroups": [
@@ -21068,15 +21097,6 @@
             },
             {
               "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "Setting",
-                "MobilBenar"
-              ]
-            },
-            {
-              "type": {
                 "value": "ResetTimer"
               },
               "parameters": [
@@ -21256,102 +21276,6 @@
                     }
                   ]
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "MobilBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Mobil",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Mobil",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Mobil",
-                "Tween",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "TopiBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Topi",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Topi",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Topi",
-                "Tween",
-                ""
               ]
             }
           ]
@@ -21542,6 +21466,54 @@
           "conditions": [
             {
               "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "MobilBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Mobil",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Mobil",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Mobil",
+                "Tween",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "BuiltinCommonInstructions::And"
               },
               "parameters": [],
@@ -21565,8 +21537,24 @@
                     "=",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
@@ -21599,16 +21587,6 @@
                 "MobilBenar",
                 "=",
                 "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Mobil\"",
-                "ToJSON(MobilBenar)"
               ]
             },
             {
@@ -21650,6 +21628,54 @@
           "conditions": [
             {
               "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "TopiBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Topi",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Topi",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Topi",
+                "Tween",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "BuiltinCommonInstructions::And"
               },
               "parameters": [],
@@ -21673,8 +21699,24 @@
                     "=",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
@@ -21711,16 +21753,6 @@
             },
             {
               "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Topi\"",
-                "ToJSON(MobilBenar)"
-              ]
-            },
-            {
-              "type": {
                 "value": "CentreCamera"
               },
               "parameters": [
@@ -21749,6 +21781,168 @@
                 "",
                 "30",
                 "1"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::And"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "MobilBenar",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "TopiBenar",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "All",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Blur2",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Blur3",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Benar",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "LevelSelesai",
+                "True",
+                "0"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "True",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "MobilBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "TopiBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "False",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Benar Semua A1\"",
+                    ""
+                  ]
+                }
               ]
             }
           ]
@@ -21908,13 +22102,127 @@
           "actions": [
             {
               "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Proses",
+                "True",
+                "1"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Proses",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "PlaySound"
+                  },
+                  "parameters": [
+                    "",
+                    "Click The Answer.wav",
+                    "",
+                    "30",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CentreCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "Blur",
+                    "",
+                    "",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Countdown\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseSoundCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "3"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Wait"
+                  },
+                  "parameters": [
+                    "0.1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PlaySound"
+                  },
+                  "parameters": [
+                    "",
+                    "Jawaban Kurang Tepat.wav",
+                    "=",
+                    "100",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "ButtonStates::ButtonFSM::IsClicked"
+              },
+              "parameters": [
+                "Ulangi",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
                 "value": "PlaySound"
               },
               "parameters": [
                 "",
-                "Click The Answer.wav",
+                "Ulangi.wav",
                 "",
-                "30",
+                "50",
                 "1"
               ]
             },
@@ -21924,7 +22232,7 @@
               },
               "parameters": [
                 "",
-                "Blur",
+                "Clear",
                 "",
                 "",
                 "1"
@@ -21932,7 +22240,7 @@
             },
             {
               "type": {
-                "value": "PauseTimer"
+                "value": "UnPauseTimer"
               },
               "parameters": [
                 "",
@@ -21941,7 +22249,7 @@
             },
             {
               "type": {
-                "value": "PauseSoundCanal"
+                "value": "RePlaySoundCanal"
               },
               "parameters": [
                 "",
@@ -21958,13 +22266,11 @@
             },
             {
               "type": {
-                "value": "PlaySound"
+                "value": "SetBooleanVariable"
               },
               "parameters": [
-                "",
-                "Jawaban Kurang Tepat.wav",
-                "=",
-                "100",
+                "Proses",
+                "False",
                 "1"
               ]
             }
@@ -22046,65 +22352,6 @@
           "conditions": [
             {
               "type": {
-                "value": "ButtonStates::ButtonFSM::IsClicked"
-              },
-              "parameters": [
-                "Ulangi",
-                "ButtonFSM",
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "PlaySound"
-              },
-              "parameters": [
-                "",
-                "Ulangi.wav",
-                "",
-                "50",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "CentreCamera"
-              },
-              "parameters": [
-                "",
-                "Clear",
-                "",
-                "",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "UnPauseTimer"
-              },
-              "parameters": [
-                "",
-                "\"Countdown\""
-              ]
-            },
-            {
-              "type": {
-                "value": "RePlaySoundCanal"
-              },
-              "parameters": [
-                "",
-                "3"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
                 "value": "BuiltinCommonInstructions::Or"
               },
               "parameters": [],
@@ -22172,119 +22419,6 @@
               "parameters": [
                 "",
                 "3"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::And"
-              },
-              "parameters": [],
-              "subInstructions": [
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "MobilBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "TopiBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Or"
-                  },
-                  "parameters": [],
-                  "subInstructions": [
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "All",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Blur2",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Blur3",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Benar",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Scene"
-              },
-              "parameters": [
-                "",
-                "\"Benar Semua A1\"",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "MobilBenar",
-                "=",
-                "0"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "TopiBenar",
-                "=",
-                "0"
               ]
             }
           ]
@@ -25978,15 +26112,6 @@
             },
             {
               "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "Setting",
-                "MobilBenar"
-              ]
-            },
-            {
-              "type": {
                 "value": "ResetTimer"
               },
               "parameters": [
@@ -26166,102 +26291,6 @@
                     }
                   ]
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "TasBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Tas",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Tas",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Tas",
-                "ButtonFSM",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "BonekaBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Boneka",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Boneka",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Boneka",
-                "ButtonFSM",
-                ""
               ]
             }
           ]
@@ -26452,6 +26481,216 @@
           "conditions": [
             {
               "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "TasBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Tas",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Tas",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Tas",
+                "ButtonFSM",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::And"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "ButtonStates::ButtonFSM::IsClicked"
+                  },
+                  "parameters": [
+                    "Tas",
+                    "ButtonFSM",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "TasBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "PauseSoundCanal"
+              },
+              "parameters": [
+                "",
+                "3"
+              ]
+            },
+            {
+              "type": {
+                "value": "PlaySound"
+              },
+              "parameters": [
+                "",
+                "Click The Answer.wav",
+                "",
+                "30",
+                "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "TasBenar",
+                "=",
+                "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "CentreCamera"
+              },
+              "parameters": [
+                "",
+                "Blur3",
+                "",
+                "",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "Wait"
+              },
+              "parameters": [
+                "0.1"
+              ]
+            },
+            {
+              "type": {
+                "value": "PlaySound"
+              },
+              "parameters": [
+                "",
+                "Benar2.wav",
+                "",
+                "30",
+                "1"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "BonekaBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Boneka",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Boneka",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Boneka",
+                "ButtonFSM",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "BuiltinCommonInstructions::And"
               },
               "parameters": [],
@@ -26475,8 +26714,24 @@
                     "=",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
@@ -26509,16 +26764,6 @@
                 "BonekaBenar",
                 "=",
                 "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Boneka\"",
-                "ToJSON(MobilBenar)"
               ]
             },
             {
@@ -26566,12 +26811,12 @@
               "subInstructions": [
                 {
                   "type": {
-                    "value": "ButtonStates::ButtonFSM::IsClicked"
+                    "value": "NumberVariable"
                   },
                   "parameters": [
-                    "Tas",
-                    "ButtonFSM",
-                    ""
+                    "TasBenar",
+                    "=",
+                    "1"
                   ]
                 },
                 {
@@ -26579,9 +26824,67 @@
                     "value": "NumberVariable"
                   },
                   "parameters": [
-                    "TasBenar",
+                    "BonekaBenar",
                     "=",
-                    "0"
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "All",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Blur2",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Blur3",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Benar",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    }
                   ]
                 }
               ]
@@ -26590,75 +26893,71 @@
           "actions": [
             {
               "type": {
-                "value": "PauseSoundCanal"
+                "value": "SetBooleanVariable"
               },
               "parameters": [
-                "",
-                "3"
-              ]
-            },
-            {
-              "type": {
-                "value": "PlaySound"
-              },
-              "parameters": [
-                "",
-                "Click The Answer.wav",
-                "",
-                "30",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "TasBenar",
-                "=",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Tas\"",
-                "ToJSON(MobilBenar)"
-              ]
-            },
-            {
-              "type": {
-                "value": "CentreCamera"
-              },
-              "parameters": [
-                "",
-                "Blur3",
-                "",
-                "",
+                "LevelSelesai",
+                "True",
                 "0"
               ]
-            },
+            }
+          ],
+          "events": [
             {
-              "type": {
-                "value": "Wait"
-              },
-              "parameters": [
-                "0.1"
-              ]
-            },
-            {
-              "type": {
-                "value": "PlaySound"
-              },
-              "parameters": [
-                "",
-                "Benar2.wav",
-                "",
-                "30",
-                "1"
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "True",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "TasBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "BonekaBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "False",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Benar Semua B1\"",
+                    ""
+                  ]
+                }
               ]
             }
           ]
@@ -26807,27 +27106,138 @@
                 "ButtonFSM",
                 ""
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
             {
               "type": {
-                "value": "PauseSoundCanal"
+                "value": "SetBooleanVariable"
               },
               "parameters": [
-                "",
-                "3"
+                "Proses",
+                "True",
+                "1"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Proses",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "PlaySound"
+                  },
+                  "parameters": [
+                    "",
+                    "Click The Answer.wav",
+                    "",
+                    "30",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CentreCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "Blur",
+                    "",
+                    "",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Countdown\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseSoundCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "3"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Wait"
+                  },
+                  "parameters": [
+                    "0.1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PlaySound"
+                  },
+                  "parameters": [
+                    "",
+                    "Jawaban Kurang Tepat.wav",
+                    "=",
+                    "100",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "ButtonStates::ButtonFSM::IsClicked"
+              },
+              "parameters": [
+                "Ulangi",
+                "ButtonFSM",
+                ""
               ]
             },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
             {
               "type": {
                 "value": "PlaySound"
               },
               "parameters": [
                 "",
-                "Click The Answer.wav",
+                "Ulangi.wav",
                 "",
-                "30",
+                "50",
                 "1"
               ]
             },
@@ -26837,7 +27247,7 @@
               },
               "parameters": [
                 "",
-                "Blur",
+                "Clear",
                 "",
                 "",
                 "1"
@@ -26845,11 +27255,20 @@
             },
             {
               "type": {
-                "value": "PauseTimer"
+                "value": "UnPauseTimer"
               },
               "parameters": [
                 "",
                 "\"Countdown\""
+              ]
+            },
+            {
+              "type": {
+                "value": "RePlaySoundCanal"
+              },
+              "parameters": [
+                "",
+                "3"
               ]
             },
             {
@@ -26862,13 +27281,11 @@
             },
             {
               "type": {
-                "value": "PlaySound"
+                "value": "SetBooleanVariable"
               },
               "parameters": [
-                "",
-                "Jawaban Kurang Tepat.wav",
-                "=",
-                "100",
+                "Proses",
+                "False",
                 "1"
               ]
             }
@@ -26950,56 +27367,6 @@
           "conditions": [
             {
               "type": {
-                "value": "ButtonStates::ButtonFSM::IsClicked"
-              },
-              "parameters": [
-                "Ulangi",
-                "ButtonFSM",
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "PlaySound"
-              },
-              "parameters": [
-                "",
-                "Ulangi.wav",
-                "",
-                "50",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "CentreCamera"
-              },
-              "parameters": [
-                "",
-                "Clear",
-                "",
-                "",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "UnPauseTimer"
-              },
-              "parameters": [
-                "",
-                "\"Countdown\""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
                 "value": "BuiltinCommonInstructions::Or"
               },
               "parameters": [],
@@ -27067,119 +27434,6 @@
               "parameters": [
                 "",
                 "3"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::And"
-              },
-              "parameters": [],
-              "subInstructions": [
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "TasBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "BonekaBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Or"
-                  },
-                  "parameters": [],
-                  "subInstructions": [
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "All",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Blur2",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Blur3",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Benar",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Scene"
-              },
-              "parameters": [
-                "",
-                "\"Benar Semua B1\"",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "TasBenar",
-                "=",
-                "0"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "BonekaBenar",
-                "=",
-                "0"
               ]
             }
           ]
@@ -33752,7 +34006,7 @@
                 "value": "Wait"
               },
               "parameters": [
-                "4"
+                "2"
               ]
             },
             {
@@ -35191,7 +35445,7 @@
                 "value": "Wait"
               },
               "parameters": [
-                "4"
+                "2"
               ]
             },
             {
@@ -39220,15 +39474,6 @@
             },
             {
               "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "Setting",
-                "MobilBenar"
-              ]
-            },
-            {
-              "type": {
                 "value": "ResetTimer"
               },
               "parameters": [
@@ -39247,26 +39492,6 @@
                 "10",
                 "10",
                 "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "IkanBenar",
-                "=",
-                "0"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "KakiBenar",
-                "=",
-                "0"
               ]
             }
           ],
@@ -39428,102 +39653,6 @@
                     }
                   ]
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "KakiBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "KaosKaki",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "KaosKaki",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "KaosKaki",
-                "ButtonFSM",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "IkanBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Ikan",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Ikan",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Ikan",
-                "ButtonFSM",
-                ""
               ]
             }
           ]
@@ -39714,6 +39843,54 @@
           "conditions": [
             {
               "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "KakiBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "KaosKaki",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "KaosKaki",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "KaosKaki",
+                "ButtonFSM",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "BuiltinCommonInstructions::And"
               },
               "parameters": [],
@@ -39737,8 +39914,24 @@
                     "=",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
@@ -39771,16 +39964,6 @@
                 "KakiBenar",
                 "=",
                 "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Kaki\"",
-                "ToJSON(MobilBenar)"
               ]
             },
             {
@@ -39822,6 +40005,54 @@
           "conditions": [
             {
               "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "IkanBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Ikan",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Ikan",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Ikan",
+                "ButtonFSM",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "BuiltinCommonInstructions::And"
               },
               "parameters": [],
@@ -39845,8 +40076,24 @@
                     "=",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
@@ -39883,16 +40130,6 @@
             },
             {
               "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Ikan\"",
-                "ToJSON(MobilBenar)"
-              ]
-            },
-            {
-              "type": {
                 "value": "CentreCamera"
               },
               "parameters": [
@@ -39921,6 +40158,168 @@
                 "",
                 "30",
                 "1"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::And"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "KakiBenar",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "IkanBenar",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "All",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Blur2",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Blur3",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Benar",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "LevelSelesai",
+                "True",
+                "0"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "True",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "KakiBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "IkanBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "False",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Benar Semua A2\"",
+                    ""
+                  ]
+                }
               ]
             }
           ]
@@ -40080,13 +40479,127 @@
           "actions": [
             {
               "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Proses",
+                "True",
+                "1"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Proses",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "PlaySound"
+                  },
+                  "parameters": [
+                    "",
+                    "Click The Answer.wav",
+                    "",
+                    "30",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CentreCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "Blur",
+                    "",
+                    "",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Countdown\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseSoundCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "3"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Wait"
+                  },
+                  "parameters": [
+                    "0.1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PlaySound"
+                  },
+                  "parameters": [
+                    "",
+                    "Jawaban Kurang Tepat.wav",
+                    "=",
+                    "100",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "ButtonStates::ButtonFSM::IsClicked"
+              },
+              "parameters": [
+                "Ulangi",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
                 "value": "PlaySound"
               },
               "parameters": [
                 "",
-                "Click The Answer.wav",
+                "Ulangi.wav",
                 "",
-                "30",
+                "50",
                 "1"
               ]
             },
@@ -40096,7 +40609,7 @@
               },
               "parameters": [
                 "",
-                "Blur",
+                "Clear",
                 "",
                 "",
                 "1"
@@ -40104,7 +40617,7 @@
             },
             {
               "type": {
-                "value": "PauseTimer"
+                "value": "UnPauseTimer"
               },
               "parameters": [
                 "",
@@ -40113,7 +40626,7 @@
             },
             {
               "type": {
-                "value": "PauseSoundCanal"
+                "value": "RePlaySoundCanal"
               },
               "parameters": [
                 "",
@@ -40130,13 +40643,11 @@
             },
             {
               "type": {
-                "value": "PlaySound"
+                "value": "SetBooleanVariable"
               },
               "parameters": [
-                "",
-                "Jawaban Kurang Tepat.wav",
-                "=",
-                "100",
+                "Proses",
+                "False",
                 "1"
               ]
             }
@@ -40218,71 +40729,6 @@
           "conditions": [
             {
               "type": {
-                "value": "ButtonStates::ButtonFSM::IsClicked"
-              },
-              "parameters": [
-                "Ulangi",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Once"
-              },
-              "parameters": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "PlaySound"
-              },
-              "parameters": [
-                "",
-                "Ulangi.wav",
-                "",
-                "50",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "CentreCamera"
-              },
-              "parameters": [
-                "",
-                "Clear",
-                "",
-                "",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "UnPauseTimer"
-              },
-              "parameters": [
-                "",
-                "\"Countdown\""
-              ]
-            },
-            {
-              "type": {
-                "value": "RePlaySoundCanal"
-              },
-              "parameters": [
-                "",
-                "3"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
                 "value": "BuiltinCommonInstructions::Or"
               },
               "parameters": [],
@@ -40350,119 +40796,6 @@
               "parameters": [
                 "",
                 "3"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::And"
-              },
-              "parameters": [],
-              "subInstructions": [
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "KakiBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "IkanBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Or"
-                  },
-                  "parameters": [],
-                  "subInstructions": [
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "All",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Blur2",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Blur3",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Benar",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Scene"
-              },
-              "parameters": [
-                "",
-                "\"Benar Semua A2\"",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "KakiBenar",
-                "=",
-                "0"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "IkanBenar",
-                "=",
-                "0"
               ]
             }
           ]
@@ -44160,15 +44493,6 @@
             },
             {
               "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "Setting",
-                "MobilBenar"
-              ]
-            },
-            {
-              "type": {
                 "value": "ResetTimer"
               },
               "parameters": [
@@ -44348,102 +44672,6 @@
                     }
                   ]
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "TanganBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "SarungTangan",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "SarungTangan",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "SarungTangan",
-                "ButtonFSM",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "KatakBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Katak",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Katak",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Katak",
-                "ButtonFSM",
-                ""
               ]
             }
           ]
@@ -44634,6 +44862,54 @@
           "conditions": [
             {
               "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "TanganBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "SarungTangan",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "SarungTangan",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "SarungTangan",
+                "ButtonFSM",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "BuiltinCommonInstructions::And"
               },
               "parameters": [],
@@ -44657,8 +44933,24 @@
                     "=",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
@@ -44691,16 +44983,6 @@
                 "TanganBenar",
                 "=",
                 "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Tangan\"",
-                "ToJSON(TanganBenar)"
               ]
             },
             {
@@ -44742,6 +45024,54 @@
           "conditions": [
             {
               "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "KatakBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Katak",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Katak",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Katak",
+                "ButtonFSM",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "BuiltinCommonInstructions::And"
               },
               "parameters": [],
@@ -44765,8 +45095,24 @@
                     "=",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
@@ -44803,16 +45149,6 @@
             },
             {
               "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Katak\"",
-                "ToJSON(KatakBenar)"
-              ]
-            },
-            {
-              "type": {
                 "value": "CentreCamera"
               },
               "parameters": [
@@ -44841,6 +45177,168 @@
                 "",
                 "30",
                 "1"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::And"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "TanganBenar",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "KatakBenar",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "All",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Blur2",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Blur3",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Benar",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "LevelSelesai",
+                "True",
+                "0"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "True",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "KatakBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "TanganBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "False",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Benar Semua B2\"",
+                    ""
+                  ]
+                }
               ]
             }
           ]
@@ -44989,27 +45487,138 @@
                 "ButtonFSM",
                 ""
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
             {
               "type": {
-                "value": "PauseSoundCanal"
+                "value": "SetBooleanVariable"
               },
               "parameters": [
-                "",
-                "3"
+                "Proses",
+                "True",
+                "1"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Proses",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "PlaySound"
+                  },
+                  "parameters": [
+                    "",
+                    "Click The Answer.wav",
+                    "",
+                    "30",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CentreCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "Blur",
+                    "",
+                    "",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Countdown\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseSoundCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "3"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Wait"
+                  },
+                  "parameters": [
+                    "0.1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PlaySound"
+                  },
+                  "parameters": [
+                    "",
+                    "Jawaban Kurang Tepat.wav",
+                    "=",
+                    "100",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "ButtonStates::ButtonFSM::IsClicked"
+              },
+              "parameters": [
+                "Ulangi",
+                "ButtonFSM",
+                ""
               ]
             },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
             {
               "type": {
                 "value": "PlaySound"
               },
               "parameters": [
                 "",
-                "Click The Answer.wav",
+                "Ulangi.wav",
                 "",
-                "30",
+                "50",
                 "1"
               ]
             },
@@ -45019,7 +45628,7 @@
               },
               "parameters": [
                 "",
-                "Blur",
+                "Clear",
                 "",
                 "",
                 "1"
@@ -45027,11 +45636,20 @@
             },
             {
               "type": {
-                "value": "PauseTimer"
+                "value": "UnPauseTimer"
               },
               "parameters": [
                 "",
                 "\"Countdown\""
+              ]
+            },
+            {
+              "type": {
+                "value": "RePlaySoundCanal"
+              },
+              "parameters": [
+                "",
+                "3"
               ]
             },
             {
@@ -45044,13 +45662,11 @@
             },
             {
               "type": {
-                "value": "PlaySound"
+                "value": "SetBooleanVariable"
               },
               "parameters": [
-                "",
-                "Jawaban Kurang Tepat.wav",
-                "=",
-                "100",
+                "Proses",
+                "False",
                 "1"
               ]
             }
@@ -45132,56 +45748,6 @@
           "conditions": [
             {
               "type": {
-                "value": "ButtonStates::ButtonFSM::IsClicked"
-              },
-              "parameters": [
-                "Ulangi",
-                "ButtonFSM",
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "PlaySound"
-              },
-              "parameters": [
-                "",
-                "Ulangi.wav",
-                "",
-                "50",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "CentreCamera"
-              },
-              "parameters": [
-                "",
-                "Clear",
-                "",
-                "",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "UnPauseTimer"
-              },
-              "parameters": [
-                "",
-                "\"Countdown\""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
                 "value": "BuiltinCommonInstructions::Or"
               },
               "parameters": [],
@@ -45249,119 +45815,6 @@
               "parameters": [
                 "",
                 "3"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::And"
-              },
-              "parameters": [],
-              "subInstructions": [
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "TanganBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "KatakBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Or"
-                  },
-                  "parameters": [],
-                  "subInstructions": [
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "All",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Blur2",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Blur3",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Benar",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Scene"
-              },
-              "parameters": [
-                "",
-                "\"Benar Semua B2\"",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "TanganBenar",
-                "=",
-                "0"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "KatakBenar",
-                "=",
-                "0"
               ]
             }
           ]
@@ -50950,7 +51403,7 @@
                 "value": "Wait"
               },
               "parameters": [
-                "4"
+                "2"
               ]
             },
             {
@@ -52389,7 +52842,7 @@
                 "value": "Wait"
               },
               "parameters": [
-                "4"
+                "2"
               ]
             },
             {
@@ -57055,15 +57508,6 @@
             },
             {
               "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "Setting",
-                "MobilBenar"
-              ]
-            },
-            {
-              "type": {
                 "value": "ResetTimer"
               },
               "parameters": [
@@ -57243,150 +57687,6 @@
                     }
                   ]
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "BebekBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Bebek",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Bebek",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Bebek",
-                "ButtonFSM",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "LegoBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Lego",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Lego",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Lego",
-                "ButtonFSM",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "PisangBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Pisang",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Pisang",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Pisang",
-                "ButtonFSM",
-                ""
               ]
             }
           ]
@@ -57577,6 +57877,54 @@
           "conditions": [
             {
               "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "BebekBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Bebek",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Bebek",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Bebek",
+                "ButtonFSM",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "BuiltinCommonInstructions::And"
               },
               "parameters": [],
@@ -57600,8 +57948,24 @@
                     "=",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
@@ -57634,16 +57998,6 @@
                 "BebekBenar",
                 "=",
                 "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Bebek\"",
-                "ToJSON(BebekBenar)"
               ]
             },
             {
@@ -57685,6 +58039,54 @@
           "conditions": [
             {
               "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "LegoBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Lego",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Lego",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Lego",
+                "ButtonFSM",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "BuiltinCommonInstructions::And"
               },
               "parameters": [],
@@ -57708,8 +58110,24 @@
                     "=",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
@@ -57742,16 +58160,6 @@
                 "LegoBenar",
                 "=",
                 "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Lego\"",
-                "ToJSON(LegoBenar)"
               ]
             },
             {
@@ -57793,6 +58201,54 @@
           "conditions": [
             {
               "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "PisangBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Pisang",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Pisang",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Pisang",
+                "ButtonFSM",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "BuiltinCommonInstructions::And"
               },
               "parameters": [],
@@ -57816,8 +58272,24 @@
                     "=",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
@@ -57854,16 +58326,6 @@
             },
             {
               "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Pisang\"",
-                "ToJSON(PisangBenar)"
-              ]
-            },
-            {
-              "type": {
                 "value": "CentreCamera"
               },
               "parameters": [
@@ -57892,6 +58354,188 @@
                 "",
                 "30",
                 "1"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::And"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "BebekBenar",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "LegoBenar",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "PisangBenar",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "All",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Blur2",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Blur3",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Benar",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "LevelSelesai",
+                "True",
+                "0"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "True",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "BebekBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "LegoBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "PisangBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "False",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Benar Semua A3\"",
+                    ""
+                  ]
+                }
               ]
             }
           ]
@@ -58051,13 +58695,127 @@
           "actions": [
             {
               "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Proses",
+                "True",
+                "1"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Proses",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "PlaySound"
+                  },
+                  "parameters": [
+                    "",
+                    "Click The Answer.wav",
+                    "",
+                    "30",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CentreCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "Blur",
+                    "",
+                    "",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Countdown\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseSoundCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "3"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Wait"
+                  },
+                  "parameters": [
+                    "0.1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PlaySound"
+                  },
+                  "parameters": [
+                    "",
+                    "Jawaban Kurang Tepat.wav",
+                    "=",
+                    "100",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "ButtonStates::ButtonFSM::IsClicked"
+              },
+              "parameters": [
+                "Ulangi",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
                 "value": "PlaySound"
               },
               "parameters": [
                 "",
-                "Click The Answer.wav",
+                "Ulangi.wav",
                 "",
-                "30",
+                "50",
                 "1"
               ]
             },
@@ -58067,7 +58825,7 @@
               },
               "parameters": [
                 "",
-                "Blur",
+                "Clear",
                 "",
                 "",
                 "1"
@@ -58075,7 +58833,7 @@
             },
             {
               "type": {
-                "value": "PauseTimer"
+                "value": "UnPauseTimer"
               },
               "parameters": [
                 "",
@@ -58084,7 +58842,7 @@
             },
             {
               "type": {
-                "value": "PauseSoundCanal"
+                "value": "RePlaySoundCanal"
               },
               "parameters": [
                 "",
@@ -58101,13 +58859,11 @@
             },
             {
               "type": {
-                "value": "PlaySound"
+                "value": "SetBooleanVariable"
               },
               "parameters": [
-                "",
-                "Jawaban Kurang Tepat.wav",
-                "=",
-                "100",
+                "Proses",
+                "False",
                 "1"
               ]
             }
@@ -58189,71 +58945,6 @@
           "conditions": [
             {
               "type": {
-                "value": "ButtonStates::ButtonFSM::IsClicked"
-              },
-              "parameters": [
-                "Ulangi",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Once"
-              },
-              "parameters": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "PlaySound"
-              },
-              "parameters": [
-                "",
-                "Ulangi.wav",
-                "",
-                "50",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "CentreCamera"
-              },
-              "parameters": [
-                "",
-                "Clear",
-                "",
-                "",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "UnPauseTimer"
-              },
-              "parameters": [
-                "",
-                "\"Countdown\""
-              ]
-            },
-            {
-              "type": {
-                "value": "RePlaySoundCanal"
-              },
-              "parameters": [
-                "",
-                "3"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
                 "value": "BuiltinCommonInstructions::Or"
               },
               "parameters": [],
@@ -58321,139 +59012,6 @@
               "parameters": [
                 "",
                 "3"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::And"
-              },
-              "parameters": [],
-              "subInstructions": [
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "BebekBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "LegoBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "PisangBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Or"
-                  },
-                  "parameters": [],
-                  "subInstructions": [
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "All",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Blur2",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Blur3",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Benar",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Scene"
-              },
-              "parameters": [
-                "",
-                "\"Benar Semua A3\"",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "BebekBenar",
-                "=",
-                "0"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "LegoBenar",
-                "=",
-                "0"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "PisangBenar",
-                "=",
-                "0"
               ]
             }
           ]
@@ -62921,15 +63479,6 @@
             },
             {
               "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "Setting",
-                "MobilBenar"
-              ]
-            },
-            {
-              "type": {
                 "value": "ResetTimer"
               },
               "parameters": [
@@ -63109,102 +63658,6 @@
                     }
                   ]
                 }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "AnggurBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Anggur",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Anggur",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Anggur",
-                "ButtonFSM",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "TerongBenar",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Terong",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Terong",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Terong",
-                "ButtonFSM",
-                ""
               ]
             }
           ]
@@ -63395,6 +63848,54 @@
           "conditions": [
             {
               "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "AnggurBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Anggur",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Anggur",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Anggur",
+                "ButtonFSM",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "BuiltinCommonInstructions::And"
               },
               "parameters": [],
@@ -63418,8 +63919,24 @@
                     "=",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
@@ -63452,16 +63969,6 @@
                 "AnggurBenar",
                 "=",
                 "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Anggur\"",
-                "ToJSON(AnggurBenar)"
               ]
             },
             {
@@ -63503,6 +64010,54 @@
           "conditions": [
             {
               "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "TerongBenar",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+              },
+              "parameters": [
+                "Terong",
+                "Animation",
+                "=",
+                "\"Correct\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Terong",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Terong",
+                "ButtonFSM",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "BuiltinCommonInstructions::And"
               },
               "parameters": [],
@@ -63526,8 +64081,24 @@
                     "=",
                     "0"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
             }
           ],
           "actions": [
@@ -63564,16 +64135,6 @@
             },
             {
               "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Terong\"",
-                "ToJSON(TerongBenar)"
-              ]
-            },
-            {
-              "type": {
                 "value": "CentreCamera"
               },
               "parameters": [
@@ -63602,6 +64163,168 @@
                 "",
                 "30",
                 "1"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::And"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "AnggurBenar",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "TerongBenar",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "All",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Blur2",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Blur3",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ButtonStates::ButtonFSM::IsClicked"
+                      },
+                      "parameters": [
+                        "Benar",
+                        "ButtonFSM",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "LevelSelesai",
+                "True",
+                "0"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "True",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "AnggurBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "TerongBenar",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "LevelSelesai",
+                    "False",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Benar Semua B3\"",
+                    ""
+                  ]
+                }
               ]
             }
           ]
@@ -63761,13 +64484,127 @@
           "actions": [
             {
               "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "Proses",
+                "True",
+                "1"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Proses",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "PlaySound"
+                  },
+                  "parameters": [
+                    "",
+                    "Click The Answer.wav",
+                    "",
+                    "30",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CentreCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "Blur",
+                    "",
+                    "",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseTimer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Countdown\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseSoundCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "3"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Wait"
+                  },
+                  "parameters": [
+                    "0.1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PlaySound"
+                  },
+                  "parameters": [
+                    "",
+                    "Jawaban Kurang Tepat.wav",
+                    "=",
+                    "100",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "ButtonStates::ButtonFSM::IsClicked"
+              },
+              "parameters": [
+                "Ulangi",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
                 "value": "PlaySound"
               },
               "parameters": [
                 "",
-                "Click The Answer.wav",
+                "Ulangi.wav",
                 "",
-                "30",
+                "50",
                 "1"
               ]
             },
@@ -63777,7 +64614,7 @@
               },
               "parameters": [
                 "",
-                "Blur",
+                "Clear",
                 "",
                 "",
                 "1"
@@ -63785,7 +64622,7 @@
             },
             {
               "type": {
-                "value": "PauseTimer"
+                "value": "UnPauseTimer"
               },
               "parameters": [
                 "",
@@ -63794,7 +64631,7 @@
             },
             {
               "type": {
-                "value": "PauseSoundCanal"
+                "value": "RePlaySoundCanal"
               },
               "parameters": [
                 "",
@@ -63811,13 +64648,11 @@
             },
             {
               "type": {
-                "value": "PlaySound"
+                "value": "SetBooleanVariable"
               },
               "parameters": [
-                "",
-                "Jawaban Kurang Tepat.wav",
-                "=",
-                "100",
+                "Proses",
+                "False",
                 "1"
               ]
             }
@@ -63899,71 +64734,6 @@
           "conditions": [
             {
               "type": {
-                "value": "ButtonStates::ButtonFSM::IsClicked"
-              },
-              "parameters": [
-                "Ulangi",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Once"
-              },
-              "parameters": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "PlaySound"
-              },
-              "parameters": [
-                "",
-                "Ulangi.wav",
-                "",
-                "50",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "CentreCamera"
-              },
-              "parameters": [
-                "",
-                "Clear",
-                "",
-                "",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "UnPauseTimer"
-              },
-              "parameters": [
-                "",
-                "\"Countdown\""
-              ]
-            },
-            {
-              "type": {
-                "value": "RePlaySoundCanal"
-              },
-              "parameters": [
-                "",
-                "3"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
                 "value": "BuiltinCommonInstructions::Or"
               },
               "parameters": [],
@@ -64031,119 +64801,6 @@
               "parameters": [
                 "",
                 "3"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::And"
-              },
-              "parameters": [],
-              "subInstructions": [
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "AnggurBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "TerongBenar",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Or"
-                  },
-                  "parameters": [],
-                  "subInstructions": [
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "All",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Blur2",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Blur3",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ButtonStates::ButtonFSM::IsClicked"
-                      },
-                      "parameters": [
-                        "Benar",
-                        "ButtonFSM",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Scene"
-              },
-              "parameters": [
-                "",
-                "\"Benar Semua B3\"",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "AnggurBenar",
-                "=",
-                "0"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "TerongBenar",
-                "=",
-                "0"
               ]
             }
           ]
