@@ -9192,15 +9192,6 @@
           "actions": [
             {
               "type": {
-                "value": "DeleteGroupFichier"
-              },
-              "parameters": [
-                "\"game\"",
-                "\"game\""
-              ]
-            },
-            {
-              "type": {
                 "value": "SetCameraCenterX"
               },
               "parameters": [
