@@ -1,7 +1,7 @@
 {
   "firstLayout": "",
   "gdVersion": {
-    "build": 242,
+    "build": 245,
     "major": 5,
     "minor": 5,
     "revision": 0
@@ -3725,6 +3725,27 @@
       "name": "LevelSelesai",
       "type": "boolean",
       "value": false
+    },
+    {
+      "name": "Game",
+      "type": "structure",
+      "children": [
+        {
+          "name": "done1",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "done2",
+          "type": "number",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "tempload",
+      "type": "number",
+      "value": 0
     }
   ],
   "layouts": [
@@ -3749,7 +3770,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.29122588669111255,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [],
@@ -6503,6 +6525,26 @@
           "actions": [
             {
               "type": {
+                "value": "ReadStringFromStorage"
+              },
+              "parameters": [
+                "\"game\"",
+                "\"game\" ",
+                "",
+                "tempload"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "tempload",
+                "Game"
+              ]
+            },
+            {
+              "type": {
                 "value": "PlayMusicCanal"
               },
               "parameters": [
@@ -6522,46 +6564,6 @@
                 "Music",
                 "True",
                 "100"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Complete\"",
-                "\"Level1\" ",
-                "",
-                "Level1Done"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "\"Level1Done\"",
-                "Level1"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Complete\"",
-                "\"Level2\" ",
-                "",
-                "Level2Done"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "\"Level2Done\"",
-                "Level2"
               ]
             },
             {
@@ -7584,9 +7586,9 @@
                 "value": "EcrireFichierTxt"
               },
               "parameters": [
-                "\"Volume\"",
-                "\"Volume\"",
-                "ToJSON(Volume)"
+                "\"game\"",
+                "\"game\"",
+                "ToJSON(Game)"
               ]
             }
           ]
@@ -8432,7 +8434,8 @@
         "gridAlpha": 0.8,
         "snap": true,
         "zoomFactor": 0.2386775827025785,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [],
@@ -9608,8 +9611,9 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.841642812537312,
-        "windowMask": false
+        "zoomFactor": 0.379712100194794,
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [
@@ -10932,10 +10936,19 @@
                 "value": "ReadStringFromStorage"
               },
               "parameters": [
-                "\"Complete\"",
-                "\"Level1\" ",
+                "\"game\"",
+                "\"game\" ",
                 "",
-                "Level1Done"
+                "tempload"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "tempload",
+                "Game"
               ]
             },
             {
@@ -10946,17 +10959,6 @@
                 "Level1",
                 "=",
                 "ToNumber(Level1Done)"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Complete\"",
-                "\"Level2\" ",
-                "",
-                "Level2Done"
               ]
             },
             {
@@ -10998,152 +11000,174 @@
                 ""
               ]
             }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "Level1",
-                "=",
-                "1"
-              ]
-            }
           ],
-          "actions": [
+          "events": [
             {
-              "type": {
-                "value": "Create"
-              },
-              "parameters": [
-                "",
-                "Kuning",
-                "526",
-                "-720",
-                ""
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Game.done1",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "Kuning",
+                    "526",
+                    "-720",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Abu",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+                  },
+                  "parameters": [
+                    "Kuning",
+                    "Tween",
+                    "\"\"",
+                    "526",
+                    "0",
+                    "\"easeInCubic\"",
+                    "1",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "Locked1",
+                    "Animation",
+                    "=",
+                    "\"Correct\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "Kuning",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                }
               ]
             },
             {
-              "type": {
-                "value": "Delete"
-              },
-              "parameters": [
-                "Abu",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
-              },
-              "parameters": [
-                "Kuning",
-                "Tween",
-                "\"\"",
-                "526",
-                "0",
-                "\"easeInCubic\"",
-                "1",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Locked1",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ChangePlan"
-              },
-              "parameters": [
-                "Kuning",
-                "=",
-                "0"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "NumberVariable"
-              },
-              "parameters": [
-                "Level2",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Create"
-              },
-              "parameters": [
-                "",
-                "Hijau",
-                "860",
-                "720",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "Delete"
-              },
-              "parameters": [
-                "Abu2",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
-              },
-              "parameters": [
-                "Hijau",
-                "Tween",
-                "\"\"",
-                "860",
-                "0",
-                "\"easeInCubic\"",
-                "1",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "Locked2",
-                "Animation",
-                "=",
-                "\"Correct\""
-              ]
-            },
-            {
-              "type": {
-                "value": "ChangePlan"
-              },
-              "parameters": [
-                "Hijau",
-                "=",
-                "0"
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Game.done2",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "Hijau",
+                    "860",
+                    "720",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Abu2",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+                  },
+                  "parameters": [
+                    "Hijau",
+                    "Tween",
+                    "\"\"",
+                    "860",
+                    "0",
+                    "\"easeInCubic\"",
+                    "1",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "Locked2",
+                    "Animation",
+                    "=",
+                    "\"Correct\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "Hijau",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                }
               ]
             }
           ]
@@ -11434,6 +11458,16 @@
             },
             {
               "type": {
+                "value": "EcrireFichierTxt"
+              },
+              "parameters": [
+                "\"game\"",
+                "\"game\"",
+                "ToJSON(Game)"
+              ]
+            },
+            {
+              "type": {
                 "value": "Scene"
               },
               "parameters": [
@@ -11543,6 +11577,16 @@
               },
               "parameters": [
                 "Locked2"
+              ]
+            },
+            {
+              "type": {
+                "value": "EcrireFichierTxt"
+              },
+              "parameters": [
+                "\"game\"",
+                "\"game\"",
+                "ToJSON(Game)"
               ]
             },
             {
@@ -11720,7 +11764,8 @@
         "gridAlpha": 0.8,
         "snap": true,
         "zoomFactor": 0.3010461197182463,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [
@@ -13084,6 +13129,26 @@
           "actions": [
             {
               "type": {
+                "value": "ReadStringFromStorage"
+              },
+              "parameters": [
+                "\"game\"",
+                "\"game\" ",
+                "",
+                "tempload"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "tempload",
+                "Game"
+              ]
+            },
+            {
+              "type": {
                 "value": "Cache"
               },
               "parameters": [
@@ -13096,46 +13161,6 @@
               },
               "parameters": [
                 "Pembatas2"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Level A1\"",
-                "",
-                "Setting1"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "\"Setting1\"",
-                "A1"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Level B1\"",
-                "",
-                "Setting2"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "\"Setting2\"",
-                "B1"
               ]
             },
             {
@@ -13286,16 +13311,6 @@
               "actions": [
                 {
                   "type": {
-                    "value": "Scene"
-                  },
-                  "parameters": [
-                    "",
-                    "\"Level\"",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
                     "value": "SetNumberVariable"
                   },
                   "parameters": [
@@ -13319,19 +13334,19 @@
                     "value": "EcrireFichierTxt"
                   },
                   "parameters": [
-                    "\"Benar\"",
-                    "\"Level A1\"",
-                    "ToJSON(A1)"
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
                   ]
                 },
                 {
                   "type": {
-                    "value": "EcrireFichierTxt"
+                    "value": "Scene"
                   },
                   "parameters": [
-                    "\"Benar\"",
-                    "\"Level B1\"",
-                    "ToJSON(B1)"
+                    "",
+                    "\"Level\"",
+                    ""
                   ]
                 }
               ]
@@ -14122,9 +14137,9 @@
                 "value": "EcrireFichierTxt"
               },
               "parameters": [
-                "\"Complete\"",
-                "\"Level1\"",
-                "ToJSON(Level1)"
+                "\"game\"",
+                "\"game\"",
+                "ToJSON(Game)"
               ]
             },
             {
@@ -14162,19 +14177,135 @@
                 "value": "EcrireFichierTxt"
               },
               "parameters": [
-                "\"Benar\"",
-                "\"Level A1\"",
-                "ToJSON(A1)"
+                "\"game\"",
+                "\"game\"",
+                "ToJSON(Game)"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "A1",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "B1",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Game.done1",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                }
               ]
             },
             {
-              "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Level B1\"",
-                "ToJSON(B1)"
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "A1",
+                    "!=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "B1",
+                    "!=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Level1",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "A1",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "B1",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Level\"",
+                    ""
+                  ]
+                }
               ]
             }
           ]
@@ -14573,7 +14704,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.37971210019479373,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [
@@ -16361,7 +16493,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.2636457673770804,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [
@@ -18111,7 +18244,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.17130934511241908,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [
         {
@@ -23146,7 +23280,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.1892301038062292,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [
         {
@@ -28161,7 +28296,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.5843784410740926,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [
@@ -28551,10 +28687,10 @@
                 "value": "ReadStringFromStorage"
               },
               "parameters": [
-                "\"Complete\"",
-                "\"Level1\" ",
+                "\"game\"",
+                "\"game\" ",
                 "",
-                "Level1Done"
+                "tempload"
               ]
             },
             {
@@ -28562,48 +28698,8 @@
                 "value": "JSONToVariableStructure2"
               },
               "parameters": [
-                "\"Level1Done\"",
-                "Level1"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Level A1\"",
-                "",
-                "Setting1"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "\"Setting1\"",
-                "A1"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Level B1\"",
-                "",
-                "Setting2"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "\"Setting2\"",
-                "B1"
+                "tempload",
+                "Game"
               ]
             },
             {
@@ -28656,21 +28752,21 @@
                         "=",
                         "1"
                       ]
-                    },
-                    {
-                      "type": {
-                        "value": "NumberVariable"
-                      },
-                      "parameters": [
-                        "Level1",
-                        "=",
-                        "1"
-                      ]
                     }
                   ]
                 }
               ],
               "actions": [
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                },
                 {
                   "type": {
                     "value": "Scene"
@@ -28679,46 +28775,6 @@
                     "",
                     "\"Level\"",
                     ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "A1",
-                    "=",
-                    "0"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "B1",
-                    "=",
-                    "0"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "EcrireFichierTxt"
-                  },
-                  "parameters": [
-                    "\"Benar\"",
-                    "\"Level A1\"",
-                    "ToJSON(A1)"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "EcrireFichierTxt"
-                  },
-                  "parameters": [
-                    "\"Benar\"",
-                    "\"Level B1\"",
-                    "ToJSON(B1)"
                   ]
                 }
               ]
@@ -28778,22 +28834,22 @@
             },
             {
               "type": {
-                "value": "Scene"
-              },
-              "parameters": [
-                "",
-                "\"Varian Level1\"",
-                ""
-              ]
-            },
-            {
-              "type": {
                 "value": "SetNumberVariable"
               },
               "parameters": [
                 "A1",
                 "=",
                 "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "EcrireFichierTxt"
+              },
+              "parameters": [
+                "\"game\"",
+                "\"game\"",
+                "ToJSON(Game)"
               ]
             },
             {
@@ -28808,12 +28864,69 @@
             },
             {
               "type": {
-                "value": "EcrireFichierTxt"
+                "value": "Scene"
               },
               "parameters": [
-                "\"Benar\"",
-                "\"Level A1\"",
-                "ToJSON(A1)"
+                "",
+                "\"Varian Level1\"",
+                ""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::And"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "A1",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "B1",
+                        "=",
+                        "1"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Game.done1",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                }
               ]
             }
           ]
@@ -29151,7 +29264,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.35534345588169836,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [
@@ -29541,10 +29655,10 @@
                 "value": "ReadStringFromStorage"
               },
               "parameters": [
-                "\"Complete\"",
-                "\"Level1\" ",
+                "\"game\"",
+                "\"game\" ",
                 "",
-                "Level1Done"
+                "tempload"
               ]
             },
             {
@@ -29552,48 +29666,8 @@
                 "value": "JSONToVariableStructure2"
               },
               "parameters": [
-                "\"Level1Done\"",
-                "Level1"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Level A1\"",
-                "",
-                "Setting1"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "\"Setting1\"",
-                "A1"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Level B1\"",
-                "",
-                "Setting2"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "\"Setting2\"",
-                "B1"
+                "tempload",
+                "Game"
               ]
             },
             {
@@ -29646,21 +29720,21 @@
                         "=",
                         "1"
                       ]
-                    },
-                    {
-                      "type": {
-                        "value": "NumberVariable"
-                      },
-                      "parameters": [
-                        "Level1",
-                        "=",
-                        "1"
-                      ]
                     }
                   ]
                 }
               ],
               "actions": [
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                },
                 {
                   "type": {
                     "value": "Scene"
@@ -29669,46 +29743,6 @@
                     "",
                     "\"Level\"",
                     ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "A1",
-                    "=",
-                    "0"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "B1",
-                    "=",
-                    "0"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "EcrireFichierTxt"
-                  },
-                  "parameters": [
-                    "\"Benar\"",
-                    "\"Level A1\"",
-                    "ToJSON(A1)"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "EcrireFichierTxt"
-                  },
-                  "parameters": [
-                    "\"Benar\"",
-                    "\"Level B1\"",
-                    "ToJSON(B1)"
                   ]
                 }
               ]
@@ -29768,22 +29802,22 @@
             },
             {
               "type": {
-                "value": "Scene"
-              },
-              "parameters": [
-                "",
-                "\"Varian Level1\"",
-                ""
-              ]
-            },
-            {
-              "type": {
                 "value": "SetNumberVariable"
               },
               "parameters": [
                 "B1",
                 "=",
                 "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "EcrireFichierTxt"
+              },
+              "parameters": [
+                "\"game\"",
+                "\"game\"",
+                "ToJSON(Game)"
               ]
             },
             {
@@ -29798,12 +29832,69 @@
             },
             {
               "type": {
-                "value": "EcrireFichierTxt"
+                "value": "Scene"
               },
               "parameters": [
-                "\"Benar\"",
-                "\"Level B1\"",
-                "ToJSON(B1)"
+                "",
+                "\"Varian Level1\"",
+                ""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::And"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "A1",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "B1",
+                        "=",
+                        "1"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Game.done1",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                }
               ]
             }
           ]
@@ -30136,7 +30227,8 @@
         "gridAlpha": 0.8,
         "snap": true,
         "zoomFactor": 0.2090255622833524,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [
@@ -31500,6 +31592,26 @@
           "actions": [
             {
               "type": {
+                "value": "ReadStringFromStorage"
+              },
+              "parameters": [
+                "\"game\"",
+                "\"game\" ",
+                "",
+                "tempload"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "tempload",
+                "Game"
+              ]
+            },
+            {
+              "type": {
                 "value": "Cache"
               },
               "parameters": [
@@ -31512,46 +31624,6 @@
               },
               "parameters": [
                 "Pembatas2"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Level A2\"",
-                "",
-                "Setting1"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "\"Setting1\"",
-                "A2"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Level B2\"",
-                "",
-                "Setting2"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "\"Setting2\"",
-                "B2"
               ]
             },
             {
@@ -31625,6 +31697,16 @@
               "actions": [
                 {
                   "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Level\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
                     "value": "CentreCamera"
                   },
                   "parameters": [
@@ -31643,26 +31725,6 @@
                     "Level2",
                     "=",
                     "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "A2",
-                    "=",
-                    "0"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "B2",
-                    "=",
-                    "0"
                   ]
                 }
               ]
@@ -31722,16 +31784,6 @@
               "actions": [
                 {
                   "type": {
-                    "value": "Scene"
-                  },
-                  "parameters": [
-                    "",
-                    "\"Level\"",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
                     "value": "SetNumberVariable"
                   },
                   "parameters": [
@@ -31755,19 +31807,19 @@
                     "value": "EcrireFichierTxt"
                   },
                   "parameters": [
-                    "\"Benar\"",
-                    "\"Level A2\"",
-                    "ToJSON(A2)"
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
                   ]
                 },
                 {
                   "type": {
-                    "value": "EcrireFichierTxt"
+                    "value": "Scene"
                   },
                   "parameters": [
-                    "\"Benar\"",
-                    "\"Level B2\"",
-                    "ToJSON(B2)"
+                    "",
+                    "\"Level\"",
+                    ""
                   ]
                 }
               ]
@@ -32546,9 +32598,9 @@
                 "value": "EcrireFichierTxt"
               },
               "parameters": [
-                "\"Complete\"",
-                "\"Level2\"",
-                "ToJSON(Level2)"
+                "\"game\"",
+                "\"game\"",
+                "ToJSON(Game)"
               ]
             },
             {
@@ -32580,6 +32632,157 @@
                 "=",
                 "0"
               ]
+            },
+            {
+              "type": {
+                "value": "EcrireFichierTxt"
+              },
+              "parameters": [
+                "\"game\"",
+                "\"game\"",
+                "ToJSON(Game)"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "A2",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "B2",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Game.done2",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "A2",
+                    "!=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "B2",
+                    "!=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Level2",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Scene"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Level\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "A2",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "B2",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": []
             }
           ]
         },
@@ -46542,7 +46745,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.546875,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [],
@@ -46918,6 +47122,26 @@
           "actions": [
             {
               "type": {
+                "value": "ReadStringFromStorage"
+              },
+              "parameters": [
+                "\"game\"",
+                "\"game\" ",
+                "",
+                "tempload"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "tempload",
+                "Game"
+              ]
+            },
+            {
+              "type": {
                 "value": "Wait"
               },
               "parameters": [
@@ -46986,16 +47210,6 @@
             },
             {
               "type": {
-                "value": "Scene"
-              },
-              "parameters": [
-                "",
-                "\"Varian Level2\"",
-                ""
-              ]
-            },
-            {
-              "type": {
                 "value": "SetNumberVariable"
               },
               "parameters": [
@@ -47019,9 +47233,76 @@
                 "value": "EcrireFichierTxt"
               },
               "parameters": [
-                "\"Benar\"",
-                "\"Level A2\"",
-                "ToJSON(A2)"
+                "\"game\"",
+                "\"game\"",
+                "ToJSON(Game)"
+              ]
+            },
+            {
+              "type": {
+                "value": "Scene"
+              },
+              "parameters": [
+                "",
+                "\"Varian Level2\"",
+                ""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::And"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "A2",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "B2",
+                        "=",
+                        "1"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Game.done2",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                }
               ]
             }
           ]
@@ -47359,7 +47640,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.546875,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [],
@@ -47735,6 +48017,26 @@
           "actions": [
             {
               "type": {
+                "value": "ReadStringFromStorage"
+              },
+              "parameters": [
+                "\"game\"",
+                "\"game\" ",
+                "",
+                "tempload"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "tempload",
+                "Game"
+              ]
+            },
+            {
+              "type": {
                 "value": "Wait"
               },
               "parameters": [
@@ -47803,16 +48105,6 @@
             },
             {
               "type": {
-                "value": "Scene"
-              },
-              "parameters": [
-                "",
-                "\"Varian Level2\"",
-                ""
-              ]
-            },
-            {
-              "type": {
                 "value": "SetNumberVariable"
               },
               "parameters": [
@@ -47836,10 +48128,82 @@
                 "value": "EcrireFichierTxt"
               },
               "parameters": [
-                "\"Benar\"",
-                "\"Level B2\"",
-                "ToJSON(B2)"
+                "\"game\"",
+                "\"game\"",
+                "ToJSON(Game)"
               ]
+            },
+            {
+              "type": {
+                "value": "Scene"
+              },
+              "parameters": [
+                "",
+                "\"Varian Level2\"",
+                ""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::And"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "A2",
+                        "=",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "B2",
+                        "=",
+                        "1"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Game.done2",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": []
             }
           ]
         },
@@ -48176,7 +48540,8 @@
         "gridAlpha": 0.8,
         "snap": true,
         "zoomFactor": 0.16572117247526863,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [
@@ -49444,6 +49809,26 @@
           "actions": [
             {
               "type": {
+                "value": "ReadStringFromStorage"
+              },
+              "parameters": [
+                "\"game\"",
+                "\"game\" ",
+                "",
+                "tempload"
+              ]
+            },
+            {
+              "type": {
+                "value": "JSONToVariableStructure2"
+              },
+              "parameters": [
+                "tempload",
+                "Game"
+              ]
+            },
+            {
+              "type": {
                 "value": "Cache"
               },
               "parameters": [
@@ -49456,46 +49841,6 @@
               },
               "parameters": [
                 "Pembatas2"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Level A3\"",
-                "",
-                "Setting1"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "\"Setting1\"",
-                "A3"
-              ]
-            },
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"Benar\"",
-                "\"Level B3\"",
-                "",
-                "Setting2"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "\"Setting2\"",
-                "B3"
               ]
             },
             {
@@ -49569,16 +49914,6 @@
               "actions": [
                 {
                   "type": {
-                    "value": "Scene"
-                  },
-                  "parameters": [
-                    "",
-                    "\"Level\"",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
                     "value": "SetNumberVariable"
                   },
                   "parameters": [
@@ -49602,19 +49937,19 @@
                     "value": "EcrireFichierTxt"
                   },
                   "parameters": [
-                    "\"Benar\"",
-                    "\"Level A3\"",
-                    "ToJSON(A3)"
+                    "\"game\"",
+                    "\"game\"",
+                    "ToJSON(Game)"
                   ]
                 },
                 {
                   "type": {
-                    "value": "EcrireFichierTxt"
+                    "value": "Scene"
                   },
                   "parameters": [
-                    "\"Benar\"",
-                    "\"Level B3\"",
-                    "ToJSON(B3)"
+                    "",
+                    "\"Level\"",
+                    ""
                   ]
                 }
               ]
@@ -50368,7 +50703,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.35534345588169886,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [
@@ -65706,7 +66042,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.546875,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [],
@@ -66673,7 +67010,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.3797121001947931,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [],
@@ -81750,6 +82088,7 @@
               "initialVariables": []
             }
           ],
+          "editionSettings": {},
           "eventsFunctions": [
             {
               "fullName": "",
@@ -83234,7 +83573,8 @@
                   "stringProperties": [],
                   "initialVariables": []
                 }
-              ]
+              ],
+              "editionSettings": {}
             },
             {
               "areaMaxX": 256,
@@ -83548,7 +83888,8 @@
                   "stringProperties": [],
                   "initialVariables": []
                 }
-              ]
+              ],
+              "editionSettings": {}
             }
           ]
         }
@@ -85478,6 +85819,7 @@
               "initialVariables": []
             }
           ],
+          "editionSettings": {},
           "eventsFunctions": [
             {
               "fullName": "",
@@ -87543,7 +87885,8 @@
                   "stringProperties": [],
                   "initialVariables": []
                 }
-              ]
+              ],
+              "editionSettings": {}
             }
           ]
         }
