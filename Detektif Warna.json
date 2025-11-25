@@ -1,7 +1,7 @@
 {
   "firstLayout": "",
   "gdVersion": {
-    "build": 242,
+    "build": 245,
     "major": 5,
     "minor": 5,
     "revision": 0
@@ -2922,6 +2922,14 @@
         "name": "Group77.png",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "file": "Group 81 (1).png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Group 81 (1).png",
+        "smoothed": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -3749,7 +3757,8 @@
         "gridAlpha": 0.8,
         "snap": false,
         "zoomFactor": 0.29122588669111255,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [],
@@ -6576,6 +6585,7 @@
           ]
         },
         {
+          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -7939,314 +7949,6 @@
               ]
             }
           ]
-        },
-        {
-          "disabled": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "ScalableCapability::ScalableBehavior::Value"
-              },
-              "parameters": [
-                "Biru",
-                "Scale",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
-              },
-              "parameters": [
-                "Biru",
-                "Tween",
-                "\"Mulai\"",
-                "1.1",
-                "\"linear\"",
-                "0.5",
-                "",
-                "yes"
-              ]
-            }
-          ]
-        },
-        {
-          "disabled": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "ScalableCapability::ScalableBehavior::Value"
-              },
-              "parameters": [
-                "Biru",
-                "Scale",
-                "=",
-                "1.1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
-              },
-              "parameters": [
-                "Biru",
-                "Tween",
-                "\"Mulai\"",
-                "1",
-                "\"linear\"",
-                "0.5",
-                "",
-                "yes"
-              ]
-            }
-          ]
-        },
-        {
-          "disabled": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "ScalableCapability::ScalableBehavior::Value"
-              },
-              "parameters": [
-                "Merah",
-                "Scale",
-                "=",
-                "1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
-              },
-              "parameters": [
-                "Merah",
-                "Tween",
-                "\"Mulai\"",
-                "1.1",
-                "\"linear\"",
-                "0.5",
-                "",
-                "yes"
-              ]
-            }
-          ]
-        },
-        {
-          "disabled": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "ScalableCapability::ScalableBehavior::Value"
-              },
-              "parameters": [
-                "Merah",
-                "Scale",
-                "=",
-                "1.1"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
-              },
-              "parameters": [
-                "Merah",
-                "Tween",
-                "\"Mulai\"",
-                "1",
-                "\"linear\"",
-                "0.5",
-                "",
-                "yes"
-              ]
-            }
-          ]
-        },
-        {
-          "disabled": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "PosX"
-              },
-              "parameters": [
-                "Biru",
-                "=",
-                "-4"
-              ]
-            },
-            {
-              "type": {
-                "value": "PosY"
-              },
-              "parameters": [
-                "Biru",
-                "=",
-                "-85"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
-              },
-              "parameters": [
-                "Biru",
-                "Tween",
-                "\"Biru\"",
-                "-4",
-                "-70",
-                "\"linear\"",
-                "1",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "disabled": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "PosX"
-              },
-              "parameters": [
-                "Biru",
-                "=",
-                "-4"
-              ]
-            },
-            {
-              "type": {
-                "value": "PosY"
-              },
-              "parameters": [
-                "Biru",
-                "=",
-                "-70"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
-              },
-              "parameters": [
-                "Biru",
-                "Tween",
-                "\"Biru\"",
-                "-4",
-                "-85",
-                "\"linear\"",
-                "1",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "disabled": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "PosX"
-              },
-              "parameters": [
-                "Merah",
-                "=",
-                "0"
-              ]
-            },
-            {
-              "type": {
-                "value": "PosY"
-              },
-              "parameters": [
-                "Merah",
-                "=",
-                "70"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
-              },
-              "parameters": [
-                "Merah",
-                "Tween",
-                "\"Biru\"",
-                "0",
-                "55",
-                "\"linear\"",
-                "1",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "disabled": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "PosX"
-              },
-              "parameters": [
-                "Merah",
-                "=",
-                "0"
-              ]
-            },
-            {
-              "type": {
-                "value": "PosY"
-              },
-              "parameters": [
-                "Merah",
-                "=",
-                "55"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
-              },
-              "parameters": [
-                "Merah",
-                "Tween",
-                "\"Biru\"",
-                "0",
-                "70",
-                "\"linear\"",
-                "1",
-                ""
-              ]
-            }
-          ]
         }
       ],
       "layers": [
@@ -8432,7 +8134,8 @@
         "gridAlpha": 0.8,
         "snap": true,
         "zoomFactor": 0.2386775827025785,
-        "windowMask": false
+        "windowMask": false,
+        "selectedLayer": ""
       },
       "objectsGroups": [],
       "variables": [],
@@ -81750,6 +81453,7 @@
               "initialVariables": []
             }
           ],
+          "editionSettings": {},
           "eventsFunctions": [
             {
               "fullName": "",
@@ -83234,7 +82938,8 @@
                   "stringProperties": [],
                   "initialVariables": []
                 }
-              ]
+              ],
+              "editionSettings": {}
             },
             {
               "areaMaxX": 256,
@@ -83548,7 +83253,8 @@
                   "stringProperties": [],
                   "initialVariables": []
                 }
-              ]
+              ],
+              "editionSettings": {}
             }
           ]
         }
@@ -85478,6 +85184,7 @@
               "initialVariables": []
             }
           ],
+          "editionSettings": {},
           "eventsFunctions": [
             {
               "fullName": "",
@@ -87543,7 +87250,8 @@
                   "stringProperties": [],
                   "initialVariables": []
                 }
-              ]
+              ],
+              "editionSettings": {}
             }
           ]
         }
